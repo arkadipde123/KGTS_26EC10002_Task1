@@ -1,0 +1,165 @@
+:root {
+  --ink: #1b1f2a;
+  --paper: #f2ecdd;
+  --gold: #c9a227;
+  --teal: #3e7c7a;
+  --muted: #6b6455;
+  --max-width: 640px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  margin: 0 0 0.4em 0;
+  letter-spacing: -0.01em;
+}
+
+/* decorative dice-pip cluster in the corner, echoing the Ludo theme */
+.pips {
+  position: fixed;
+  top: 28px;
+  right: 28px;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+  opacity: 0.55;
+  z-index: 0;
+}
+.pips span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.pips span:nth-child(2n) { background: var(--teal); opacity: 0.85; }
+
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 96px 28px 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin: 0 0 18px 0;
+  font-weight: 500;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  color: var(--paper);
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: #cfc9b8;
+  max-width: 48ch;
+  margin-top: 14px;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 4px;
+  padding: 32px 34px;
+  border-left: 4px solid var(--teal);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+
+.card p {
+  margin: 0;
+  color: #33302a;
+}
+
+.card.highlight {
+  border-left-color: var(--gold);
+}
+
+.game-block {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.die {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  background: var(--ink);
+  border-radius: 10px;
+  position: relative;
+  margin-top: 4px;
+}
+
+.pip {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--paper);
+}
+.p1 { top: 10px; left: 10px; }
+.p2 { top: 10px; right: 10px; }
+.p3 { top: 24px; left: 24px; }
+.p4 { bottom: 10px; left: 10px; }
+.p5 { bottom: 10px; right: 10px; }
+.p6 { top: 10px; left: 24px; opacity: 0; } /* kept for potential 6-pip states, unused */
+
+.game-block h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px 60px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 72px 20px 40px; }
+  main { padding: 0 20px 60px; }
+  .card { padding: 26px 22px; }
+  .game-block { flex-direction: column; gap: 16px; }
+  .pips { top: 18px; right: 18px; width: 48px; height: 48px; gap: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
